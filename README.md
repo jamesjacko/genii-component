@@ -1,4 +1,4 @@
-# murv-component
+# MURV - Micro Unit-based React Visualisations
 
 [![Travis][build-badge]][build]
 [![npm package][npm-badge]][npm]
@@ -14,3 +14,83 @@ Describe murv-component here.
 
 [coveralls-badge]: https://img.shields.io/coveralls/user/repo/master.png?style=flat-square
 [coveralls]: https://coveralls.io/github/user/repo
+
+
+https://codeburst.io/extracting-a-react-js-component-and-publishing-it-on-npm-2a49096757f5
+
+Go to ```/code/awesome-btn``` and hit ```npm i``` . After that, 'npm link'
+
+If everything worked as expected you should see a message like this on your terminal:
+
+```/usr/local/lib/node_modules/awesome-btn -> /Users/your-name/code/awesome-btn```
+
+Now go to your app and hit ```npm link murv```
+
+You should see a message like this:
+
+## Possible Gene Configurations
+
+```javascript
+class Gene{
+  static shape = {
+    CIRCLE: 1,
+    SQUARE: 2,
+    ELLIPSE: 3,
+    TRIANGLE: 4,
+    HUMP: 5,
+    DONUT: 6,
+    RADIAL: 7,
+    STAR: 8,
+    I_RADIAL: 9
+  }
+  static color = {
+    BLACK: 1,
+    MONOTONE: 2,
+    RANDOM: 3,
+    VALUE_DEPENDANT: 4,
+    WHITE: 5
+  }
+  static color_key = {
+    OFF: 1,
+    ON: 2
+  }
+  static path_points = {
+    EVEN: 1,
+    VALUE_DEPENDANT: 2
+  }
+  static path_mode = {
+    INLINE: 1,
+    RANDOM: 2,
+    VALUE_DEPENDANT: 3,
+    MEAN_DEVIATION: 4,
+    RING: 5,
+    CUBE_SPIRAL: 6
+  }
+  static path_rotation = {
+    NONE: 1,
+    MEAN_DEPENDANT: 2,
+    RANDOM: 3
+  }
+  static path_grouping = {
+    NONE: 1,
+    DATA_GROUP: 2,
+  }
+  static object_rotation = {
+    NONE: 1,
+    VALUE_DEPENDANT: 2,
+    RANDOM: 3
+  }
+  static object_size = {
+    FULL: 1,
+    VALUE_DEPENDANT: 2
+  }
+  static filter = {
+    NONE: 1,
+    GOO: 2
+  }
+  static debugging = {
+    OFF: 1,
+    ON: 2
+  }
+}
+```
