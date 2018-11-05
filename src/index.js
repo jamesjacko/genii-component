@@ -8,15 +8,21 @@ import ErrorHandler from './ErrorHandler';
 import SVGFilter from './SVGFilter';
 
 class MURV extends Component{
+
   constructor(props){
     super(props);
+
 		this.gene = props.config.gene;
 		ErrorHandler.checkGene(this.gene);
     this.data = props.config.data.dataset.object.values;
     this.size = props.config.data.dataset.object.size;
     this.random = new Random(props.config.data.dataset.object.name);
     this.padding = this.size / 10;
-    this.path = new Path(
+		this.maxPV = 0;
+		this.minPV = 1.1;
+		this.maxP = {};
+		this.minP = {}
+		this.path = new Path(
 			this.data.length,
 			this.size,{
 				random:this.random,
@@ -28,8 +34,35 @@ class MURV extends Component{
 		);
   }
   renderShapes(path, shapes, size, placement, goo){
+		let shapeComponents, points;
+		let maxPV = 0, minPV = 1.1, maxP, minP;
 
-    const shapeComponents = shapes.map((item, i) => {
+		if(this.gene.shape === Gene.shape.SPARKLINES){
+			points = "";
+			let total = 0;
+			shapeComponents = shapes.map((item, i) => {
+
+				let p = Path.orthogonalCenterPoint(path[i].a, path[i].b, path[i].dist * item.value);
+				if(item.value < this.minPV){
+					this.minP = p;
+					this.minPV = item.value
+				} else if (item.value >= this.maxPV) {
+					this.maxP = p;
+					this.maxPV = item.value;
+				}
+				let s = (i==0)? "M" : "L";
+				points += s + p.x + " " + p.y;
+				total += item.value;
+			});
+			console.log(this.maxP, minP);
+			return(
+				<path d={ points } strokeWidth="2" fill="none"
+					stroke= {
+						Color.getColor(total / shapes.length, this.gene.color, this.random)
+					} />
+			)
+		} else {
+	    shapeComponents = shapes.map((item, i) => {
 				const center = Path.centerPoint(path[i].a, path[i].b);
         const minimum = size * 0.05;
 				let max = path[i].dist;
@@ -61,12 +94,14 @@ class MURV extends Component{
 						value = { item.value }
           />
         );
-    });
+    	});
+		}
     return <g filter={
 			(this.gene.filter === _Gene.filter.GOO)? "url(#goo)": "" }
 			>
+
 				{ shapeComponents }
-			</g>
+				</g>
 
   }
 	renderColorKey(num){
@@ -96,6 +131,8 @@ class MURV extends Component{
         <SVGFilter />
 					{ this.renderColorKey(1000) }
           { this.renderShapes(this.path.path, this.data, this.size, 1, true) }
+					<circle cx={ this.maxP.x } cy={ this.maxP.y} fill="green" r="3" key="max" />
+					<circle cx={ this.minP.x } cy={ this.minP.y} fill="red" r="3" key="min" />
 
 
       </svg>

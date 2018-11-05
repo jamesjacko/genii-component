@@ -8,7 +8,8 @@ class Gene{
 		DONUT: 6,
 		RADIAL: 7,
 		STAR: 8,
-		I_RADIAL: 9
+		I_RADIAL: 9,
+		SPARKLINES: 10
   }
   static color = {
     BLACK: 1,
