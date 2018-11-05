@@ -16,7 +16,7 @@ class Donut extends Component{
 		}
 		let startAngle = Math.atan2(diff1.y, diff1.x);
 		let endAngle = Math.atan2(diff2.y, diff2.x);
-		let radius = (props.fullSize - props.padding * 2) / 2;
+		let radius = (props.fullSize - props.padding * 4) / 2;
 		let arc, fill = "none", stroke = props.fill, strokeWidth = radius * props.value;
 		let centerP = props.fullSize / 2;
 		switch (props.gene.shape) {
@@ -24,12 +24,12 @@ class Donut extends Component{
 				let start = this.polarToCartesian(
 					centerP,
 					centerP,
-					props.size,
+					props.value * radius,
 					startAngle);
 		    let end = this.polarToCartesian(
 					centerP,
 					centerP,
-					props.size,
+					props.value * radius,
 					endAngle);
 				arc = "M" + centerP + " " + centerP +
 							"L" + start.x + " " + start.y +
@@ -41,10 +41,10 @@ class Donut extends Component{
 				arc = this.describeArc(
 					centerP,
 					centerP,
-					(props.size) - props.size / 2,
+					(props.value * radius) / 2,
 					startAngle,
 					endAngle );
-				strokeWidth = props.size;
+				strokeWidth = props.value * radius;
 				break;
 			case Gene.shape.DONUT:
 				arc = this.describeArc(

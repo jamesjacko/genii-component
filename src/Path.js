@@ -90,12 +90,12 @@ class Path{
 	}
 
 	generateRingPath(){
-		let radius = (this.areaSize - this.padding * 2) / 2;
+		let radius = (this.areaSize - this.padding * 4) / 2;
 		let center = this.areaSize / 2;
 		let angle = (360 / this.num) * (Math.PI / 180);
 		let total = this.getMean(this.data).total;
 		let path = [];
-		let centerMargin = radius + this.padding;
+		let centerMargin = radius + this.padding * 2;
 		let p1, p2, dist;
 		for (var i = 0; i < this.num; i++) {
 			if(this.gene.path_points === Gene.path_points.EVEN){
