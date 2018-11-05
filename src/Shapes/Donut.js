@@ -5,7 +5,6 @@ import Gene from '../Gene';
 class Donut extends Component{
 	constructor(props){
 		super(props);
-		console.log(props);
 		let diff1 = {
 			x: props.pointA.x - props.fullSize / 2,
 			y: props.pointA.y - props.fullSize / 2
