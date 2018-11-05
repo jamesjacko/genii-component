@@ -49,12 +49,12 @@ class Path{
 	generateCubeSpiralPath(){
 		let longestSide = Math.ceil(Math.sqrt(this.data.length + 1));
 		let segSize = (this.areaSize - this.padding * 2) / longestSide;
-		let center = this.areaSize / 2;
+		let center = (longestSide % 2 === 1)? this.areaSize / 2 + segSize / 2: this.areaSize / 2;
 		let p1, p2, a, b, path = [], curCount = 1, curCounter = 1, steps = 2, mult = 1;
 		for (var i = 0; i < this.data.length; i++) {
 			if(i === 0){
-				p1 = new Point(center - segSize / 2, center - segSize / 2 );
-				p2 = new Point(center + segSize / 2, center - segSize / 2 );
+				p1 = new Point(center - segSize / 2, center - segSize );
+				p2 = new Point(center + segSize / 2, center - segSize );
 			} else {
 
 				if(steps === 1){
