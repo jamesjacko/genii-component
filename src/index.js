@@ -131,7 +131,7 @@ class MURV extends Component{
         <SVGFilter />
 					{ this.renderColorKey(1000) }
           { this.renderShapes(this.path.path, this.data, this.size, 1, true) }
-					<circle cx={ this.maxP.x } cy={ this.maxP.y} fill="green" r="3" key="max" />
+					<circle cx={ this.maxP.x } cy={ this.maxP.y} fill="chartreuse" r="3" key="max" />
 					<circle cx={ this.minP.x } cy={ this.minP.y} fill="red" r="3" key="min" />
 
 

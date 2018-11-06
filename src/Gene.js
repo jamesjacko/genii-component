@@ -9,7 +9,8 @@ class Gene{
 		RADIAL: 7,
 		STAR: 8,
 		I_RADIAL: 9,
-		SPARKLINES: 10
+		SPARKLINES: 10,
+		BAR: 11
   }
   static color = {
     BLACK: 1,

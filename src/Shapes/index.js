@@ -24,6 +24,7 @@ class Shape extends Component{
 				this.component = components.circle;
 				break;
 			case Gene.shape.SQUARE:
+			case Gene.shape.BAR:
 				this.component = components.square;
 				break;
 			case Gene.shape.TRIANGLE:
