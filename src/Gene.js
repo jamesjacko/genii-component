@@ -63,31 +63,18 @@ class Gene{
 		ON: 2
 	}
 
-  constructor(
-    shape = Gene.shape.CIRCLE,
-    color = Gene.color.BLACK,
-		color_key = Gene.color_key.OFF,
-		path_points = Gene.path_points.EVEN,
-    path_mode = Gene.path_mode.INLINE,
-    path_rotation = Gene.path_rotation.NONE,
-		path_grouping = Gene.path_grouping.NONE,
-    object_rotation = Gene.object_rotation.NONE,
-		object_size = Gene.object_size.FULL,
-    filter = Gene.filter.NONE,
-		debugging = Gene.debugging.OFF
-		)
-    {
-    this.shape = shape;
-    this.color = color;
-		this.color_key = color_key;
-		this.path_points = path_points;
-    this.path_mode = path_mode;
-    this.path_rotation = path_rotation;
-		this.path_grouping = path_grouping;
-    this.object_rotaion = object_rotation;
-		this.object_size = object_size;
-    this.filter = filter;
-		this.debugging = debugging;
+  constructor(params){
+    this.shape = params.shape || Gene.shape.CIRCLE;
+    this.color = params.color || Gene.shape.BLACK;
+		this.color_key = params.color_key || Gene.color_key.OFF;
+		this.path_points = params.path_points || Gene.path_points.EVEN;
+    this.path_mode = params.path_mode || Gene.path_mode.INLINE;
+    this.path_rotation = params.path_rotation || Gene.path_rotation.NONE;
+		this.path_grouping = params.path_grouping || Gene.path_grouping.NONE;
+    this.object_rotaion = params.path_rotation || Gene.path_rotation.NONE;
+		this.object_size = params.object_size || Gene.object_size.FULL;
+    this.filter = params.filter || Gene.filter.OFF;
+		this.debugging = params.debugging || Gene.debugging.OFF;
   }
 }
 
