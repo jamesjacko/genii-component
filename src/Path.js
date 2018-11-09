@@ -15,11 +15,12 @@ class Path{
 		)
 	}
 
-  constructor(num, areaSize, prefs){
-    this.num = num;
-    this.areaSize = areaSize;
+  constructor(prefs){
+		console.log(prefs);
+    this.num = prefs.dataLength;
+    this.size = prefs.size;
     this.random = prefs.random;
-		this.padding = prefs.padding;
+		this.padding = prefs.size.padding;
 		this.data = prefs.data;
 		this.groups = this.data.reduce(function (acc, curr) {
 		  if (typeof acc[curr.group] == 'undefined') {
@@ -48,13 +49,14 @@ class Path{
 
 	generateCubeSpiralPath(){
 		let longestSide = Math.ceil(Math.sqrt(this.data.length + 1));
-		let segSize = (this.areaSize - this.padding * 2) / longestSide;
-		let center = (longestSide % 2 === 1)? this.areaSize / 2 + segSize / 2: this.areaSize / 2;
+		let smallestSize = Math.min(this.size.width, this.size.height);
+		let segSize = (smallestSize - this.padding * 2) / longestSide;
+		console.log(longestSide, smallestSize, segSize);
 		let p1, p2, a, b, path = [], curCount = 1, curCounter = 1, steps = 2, mult = 1;
 		for (var i = 0; i < this.data.length; i++) {
 			if(i === 0){
-				p1 = new Point(center - segSize / 2, center - segSize );
-				p2 = new Point(center + segSize / 2, center - segSize );
+				p1 = new Point(this.size.width / 2, this.size.height/ 2 );
+				p2 = new Point(this.size.width / 2, this.size.height/ 2 );
 			} else {
 
 				if(steps === 1){
@@ -90,29 +92,31 @@ class Path{
 	}
 
 	generateRingPath(){
-		let radius = (this.areaSize - this.padding * 4) / 2;
-		let center = this.areaSize / 2;
+		let smallestSize = Math.min(this.size.width, this.size.height);
+		let radius = (smallestSize - this.padding * 4) / 2;
+		let center = smallestSize / 2;
 		let angle = (360 / this.num) * (Math.PI / 180);
 		let total = this.getMean(this.data).total;
 		let path = [];
-		let centerMargin = radius + this.padding * 2;
+		let centerMarginx = this.size.width / 2;
+		let centerMarginy = this.size.height / 2;
 		let p1, p2, dist;
 		for (var i = 0; i < this.num; i++) {
 			if(this.gene.path_points === Gene.path_points.EVEN){
 				p1 = new Point(
-					(Math.cos(angle * i) * radius) + centerMargin,
-					(Math.sin(angle * i) * radius) + centerMargin
+					(Math.cos(angle * i) * radius) + centerMarginx,
+					(Math.sin(angle * i) * radius) + centerMarginy
 				);
 				p2 = new Point(
-					(Math.cos(angle * (i + 1)) * radius) + centerMargin,
-					(Math.sin(angle * (i + 1)) * radius) + centerMargin
+					(Math.cos(angle * (i + 1)) * radius) + centerMarginx,
+					(Math.sin(angle * (i + 1)) * radius) + centerMarginy
 				);
 
 			} else {
 				if(i === 0){
 					p1 = new Point(
-						(Math.cos(angle * i) * radius) + centerMargin,
-						(Math.sin(angle * i) * radius) + centerMargin
+						(Math.cos(angle * i) * radius) + centerMarginx,
+						(Math.sin(angle * i) * radius) + centerMarginy
 					);
 				}
 				else {
@@ -124,8 +128,8 @@ class Path{
 				angle = addition + portion;
 
 				p2 = new Point(
-					(Math.cos(angle) * radius) + centerMargin,
-					(Math.sin(angle) * radius) + centerMargin
+					(Math.cos(angle) * radius) + centerMarginx,
+					(Math.sin(angle) * radius) + centerMarginy
 				);
 			}
 
@@ -154,13 +158,14 @@ class Path{
 	 * Use a and b instead of x and y as the dimensions may be flipped
 	*/
   generatePath(){
+		let smallestSize = Math.min(this.size.width, this.size.height);
     let returner = [], b, aVal;
 		if(this.gene.path_grouping === Gene.path_grouping.DATA_GROUP){
-			b = (this.areaSize - this.padding * this.groups.total) / this.groups.total;
-			aVal = (this.areaSize - this.padding * 2) / this.groups.max;
+			b = (this.size.height - this.padding * this.groups.total) / this.groups.total;
+			aVal = (this.size.width - this.padding * 2) / this.groups.max;
 		} else {
-	    b = (this.areaSize - this.padding * 2) / 2 + this.padding;
-			aVal = (this.areaSize - this.padding * 2) / this.num;
+	    b = (this.size.height - this.padding * 2) / 2 + this.padding;
+			aVal = (this.size.width - this.padding * 2) / this.num;
 		}
 
 		let total = this.getMean(this.data).total, p1, p2;
@@ -168,7 +173,7 @@ class Path{
     for(var i = 0; i < this.num; i++, count++){
 			let bMult = (this.gene.path_grouping === Gene.path_grouping.DATA_GROUP)? this.data[i].group + 1: 1;
 			if(this.gene.path_points === Gene.path_points.VALUE_DEPENDANT)
-				aVal = (this.areaSize - this.padding * 2) * (this.data[i].value / total);
+				aVal = (this.size.width - this.padding * 2) * (this.data[i].value / total);
 			if(i === 0)
 				p1 = new Point(i * aVal + this.padding, b * bMult);
 			else{
@@ -194,19 +199,19 @@ class Path{
 		for (var i = 0; i < prefs.path.length; i++) {
 			if(i===0){
 				if(!prefs.mode){
-					prefs.path[i].a.y += this.random.random() * this.areaSize / adjustment - this.areaSize / (adjustment * 2);
+					prefs.path[i].a.y += this.random.random() * this.size.height / adjustment - this.areaSize / (adjustment * 2);
 				}
 			} else{
 				prefs.path[i].a.y = prefs.path[i-1].b.y;
 			}
 			if(prefs.mode === Gene.path_mode.MEAN_DEVIATION){
-				var adj = this.areaSize / (adjustment * 2);
+				var adj = this.size.height / (adjustment * 2);
 				var meanDeviation = Math.abs(prefs.data[i].value - mean);
 				adj = prefs.data[i].value < mean ? adj : -adj;
 				const sel = (i > 0)? i - 1 : i;
 				prefs.path[i].b.y = prefs.path[sel].b.y + (adj * meanDeviation);
 			} else {
-				prefs.path[i].b.y += this.random.random() * this.areaSize / adjustment - this.areaSize / (adjustment * 2);
+				prefs.path[i].b.y += this.random.random() * this.size.height / adjustment - this.size.height / (adjustment * 2);
 			}
 			prefs.path[i].dist = Point.distance(prefs.path[i].a, prefs.path[i].b);
 		}
@@ -216,7 +221,7 @@ class Path{
   adjustPoint(p){
     switch (this.path_mode) {
       case Gene.path_mode.RANDOM:
-        p.y += this.random.random() * this.areaSize / 2.5 - this.areaSize / 5;
+        p.y += this.random.random() * this.size.height / 2.5 - this.size.height / 5;
         break;
       case 2:
         p.y = p.x;
