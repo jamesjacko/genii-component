@@ -44,7 +44,7 @@ class Shape extends Component{
 			case Gene.shape.STAR:
 				this.component = components.donut;
 				break;
-			case Gene.shape.SPARKLINES:
+			case Gene.shape.SPARKLINE:
 				this.component = components.spark;
 				break;
 			default:

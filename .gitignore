@@ -7,3 +7,5 @@
 npm-debug.log*
 
 src/\.DS_Store
+
+package-lock\.json

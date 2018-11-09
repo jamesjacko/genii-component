@@ -37,7 +37,7 @@ class MURV extends Component{
   renderShapes(path, shapes, size, placement, goo){
 		let shapeComponents;
 
-		if(this.gene.shape === Gene.shape.SPARKLINES){
+		if(this.gene.shape === Gene.shape.SPARKLINE){
 
 			shapeComponents = (
 				<Spark
