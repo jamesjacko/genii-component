@@ -4,6 +4,7 @@ import Triangle from './Triangle';
 import Ellipse from './Ellipse';
 import Hump from './Hump';
 import Donut from './Donut';
+import Spark from './Spark';
 import React, { Component } from 'react';
 import Gene from '../Gene';
 
@@ -15,7 +16,8 @@ class Shape extends Component{
 			triangle: Triangle,
 			ellipse: Ellipse,
 			hump: Hump,
-			donut: Donut
+			donut: Donut,
+			spark: Spark
 		}
 		super(props);
 		this.props = props;
@@ -42,11 +44,15 @@ class Shape extends Component{
 			case Gene.shape.STAR:
 				this.component = components.donut;
 				break;
+			case Gene.shape.SPARKLINES:
+				this.component = components.spark;
+				break;
 			default:
 				this.component = components.circle;
 		}
 	}
 	render(){
+		console.log(this.component);
 		return(
 			<this.component { ...this.props } />
 		)

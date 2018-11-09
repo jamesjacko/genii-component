@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Shape from './Shapes/';
+import Spark from './Shapes/Spark';
 import Color from './Color';
 import Path from './Path';
 import Random from './Random';
@@ -34,32 +35,19 @@ class MURV extends Component{
 		);
   }
   renderShapes(path, shapes, size, placement, goo){
-		let shapeComponents, points;
-		let maxPV = 0, minPV = 1.1, maxP, minP;
+		let shapeComponents;
 
 		if(this.gene.shape === Gene.shape.SPARKLINES){
-			points = "";
-			let total = 0;
-			shapeComponents = shapes.map((item, i) => {
 
-				let p = Path.orthogonalCenterPoint(path[i].a, path[i].b, path[i].dist * item.value);
-				if(item.value < this.minPV){
-					this.minP = p;
-					this.minPV = item.value
-				} else if (item.value >= this.maxPV) {
-					this.maxP = p;
-					this.maxPV = item.value;
-				}
-				let s = (i==0)? "M" : "L";
-				points += s + p.x + " " + p.y;
-				total += item.value;
-			});
-			console.log(this.maxP, minP);
 			return(
-				<path d={ points } strokeWidth="2" fill="none"
-					stroke= {
-						Color.getColor(total / shapes.length, this.gene.color, this.random)
-					} />
+				<Spark
+          path = { path }
+          shapes = { shapes }
+          size = { size }
+          placement = { placement }
+          goo = { goo }
+          gene = { this.gene }
+					 />
 			)
 		} else {
 	    shapeComponents = shapes.map((item, i) => {
@@ -131,8 +119,7 @@ class MURV extends Component{
         <SVGFilter />
 					{ this.renderColorKey(1000) }
           { this.renderShapes(this.path.path, this.data, this.size, 1, true) }
-					<circle cx={ this.maxP.x } cy={ this.maxP.y} fill="chartreuse" r="3" key="max" />
-					<circle cx={ this.minP.x } cy={ this.minP.y} fill="red" r="3" key="min" />
+
 
 
       </svg>
