@@ -8,7 +8,9 @@ class Gene{
 		DONUT: 6,
 		RADIAL: 7,
 		STAR: 8,
-		I_RADIAL: 9
+		I_RADIAL: 9,
+		SPARKLINES: 10,
+		BAR: 11
   }
   static color = {
     BLACK: 1,
@@ -49,7 +51,8 @@ class Gene{
   }
 	static object_size = {
 		FULL: 1,
-		VALUE_DEPENDANT: 2
+		VALUE_DEPENDANT: 2,
+    WIN_LOSS: 3
 	}
   static filter = {
     NONE: 1,

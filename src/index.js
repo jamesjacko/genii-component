@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Shape from './Shapes/';
+import Spark from './Shapes/Spark';
 import Color from './Color';
 import Path from './Path';
 import Random from './Random';
@@ -8,15 +9,21 @@ import ErrorHandler from './ErrorHandler';
 import SVGFilter from './SVGFilter';
 
 class MURV extends Component{
+
   constructor(props){
     super(props);
+
 		this.gene = props.config.gene;
 		ErrorHandler.checkGene(this.gene);
     this.data = props.config.data.dataset.object.values;
     this.size = props.config.data.dataset.object.size;
     this.random = new Random(props.config.data.dataset.object.name);
     this.padding = this.size / 10;
-    this.path = new Path(
+		this.maxPV = 0;
+		this.minPV = 1.1;
+		this.maxP = {};
+		this.minP = {}
+		this.path = new Path(
 			this.data.length,
 			this.size,{
 				random:this.random,
@@ -28,10 +35,25 @@ class MURV extends Component{
 		);
   }
   renderShapes(path, shapes, size, placement, goo){
+		let shapeComponents;
 
-    const shapeComponents = shapes.map((item, i) => {
+		if(this.gene.shape === Gene.shape.SPARKLINES){
+
+			shapeComponents = (
+				<Spark
+          path = { path }
+          shapes = { shapes }
+          size = { size }
+          placement = { placement }
+          goo = { goo }
+          gene = { this.gene }
+          padding = { this.padding }
+					 />
+			)
+		} else {
+	    shapeComponents = shapes.map((item, i) => {
 				const center = Path.centerPoint(path[i].a, path[i].b);
-        const minimum = size * 0.05;
+        const minimum = 0;
 				let max = path[i].dist;
 				if(this.gene.path_grouping === _Gene.path_grouping.DATA_GROUP){
 					this.groups = this.data.reduce(function (acc, curr) {
@@ -61,12 +83,14 @@ class MURV extends Component{
 						value = { item.value }
           />
         );
-    });
+    	});
+		}
     return <g filter={
 			(this.gene.filter === _Gene.filter.GOO)? "url(#goo)": "" }
 			>
+
 				{ shapeComponents }
-			</g>
+				</g>
 
   }
 	renderColorKey(num){
@@ -96,6 +120,7 @@ class MURV extends Component{
         <SVGFilter />
 					{ this.renderColorKey(1000) }
           { this.renderShapes(this.path.path, this.data, this.size, 1, true) }
+
 
 
       </svg>
