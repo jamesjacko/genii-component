@@ -39,7 +39,7 @@ class MURV extends Component{
 
 		if(this.gene.shape === Gene.shape.SPARKLINES){
 
-			return(
+			shapeComponents = (
 				<Spark
           path = { path }
           shapes = { shapes }
@@ -47,6 +47,7 @@ class MURV extends Component{
           placement = { placement }
           goo = { goo }
           gene = { this.gene }
+          padding = { this.padding }
 					 />
 			)
 		} else {

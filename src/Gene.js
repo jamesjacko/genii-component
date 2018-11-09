@@ -51,7 +51,8 @@ class Gene{
   }
 	static object_size = {
 		FULL: 1,
-		VALUE_DEPENDANT: 2
+		VALUE_DEPENDANT: 2,
+    WIN_LOSS: 3
 	}
   static filter = {
     NONE: 1,

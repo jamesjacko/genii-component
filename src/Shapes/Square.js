@@ -11,15 +11,12 @@ class Square extends Component{
 		let degrees = 180 * angle / Math.PI;
 		angle = (360 + Math.round(degrees)) % 360;
 		let dist = Point.distance(props.pointA, props.pointB) * 0.6;
-		console.log(props);
 		this.elementAtts = {
-			x: (props.gene.shape === Gene.shape.BAR) ? props.x - dist / 2 : props.x - props.size / 2,
-			y: (props.gene.shape === Gene.shape.BAR) ? props.y - props.size:  props.y - props.size / 2,
-			key: props.key,
+			x: (props.gene.shape === Gene.shape.BAR || props.gene.object_size === Gene.object_size.WIN_LOSS) ? props.x - dist / 2 : props.x - props.size / 2,
+			y: (props.gene.shape === Gene.shape.BAR || props.gene.object_size === Gene.object_size.WIN_LOSS) ? props.y - props.size:  props.y - props.size / 2,
 			width: (props.gene.shape = Gene.shape.BAR) ? dist :  props.size,
 			height: props.size,
-			fill: props.fill,
-			transform: "rotate(" + angle + " "  + props.x + " " + props.y +  ")"
+			fill: props.fill
 		}
 		this.pointA = props.pointA;
 		this.pointB = props.pointB;
