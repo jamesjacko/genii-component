@@ -52,7 +52,6 @@ class Shape extends Component{
 		}
 	}
 	render(){
-		console.log(this.component);
 		return(
 			<this.component { ...this.props } />
 		)
