@@ -9,10 +9,11 @@ class Square extends Component{
 		let angle = Path.getAngle(props.pointA, props.pointB);
 		let degrees = 180 * angle / Math.PI;
 		angle = (360 + Math.round(degrees)) % 360;
-		let dist = Point.distance(props.pointA, props.pointB) * 0.6;
+		let dist = Point.distance(props.pointA, props.pointB) * 0.9;
 		let x, y, height;
 
-
+		let fullSize = props.fullSize - props.padding * 2;
+		console.log(fullSize);
 
 		if(props.gene.shape === Gene.shape.BAR || props.gene.object_size === Gene.object_size.WIN_LOSS){
 			x = props.x - dist / 2;
@@ -21,14 +22,14 @@ class Square extends Component{
 		}
 
 		if (props.gene.shape === Gene.shape.BAR){
-			height = props.value * props.fullSize;
+			height = props.value * fullSize;
 		} else {
 			height = props.size;
 		}
 		if(props.gene.object_size === Gene.object_size.WIN_LOSS){
 			y = props.y - height;
 		} else if(props.gene.shape === Gene.shape.BAR){
-			y = props.fullSize - height;
+			y = fullSize - height + props.padding;
 		} else {
 			y = props.y - height / 2;
 		}
