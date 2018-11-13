@@ -40,7 +40,7 @@ class Path{
 		} else if (this.gene.path_mode === Gene.path_mode.CUBE_SPIRAL){
 			this.path = this.generateCubeSpiralPath();
 		} else {
-			this.path = this.generateLinePath(this.gene.path_mode === Gene.path_mode.INLINE_HALF);
+			this.path = this.generateLinePath();
 		}
 
   }
@@ -138,9 +138,9 @@ class Path{
 		return path;
 	}
 
-	generateLinePath(half){
-		let path = this.generatePath(half);
-		if(this.gene.path_mode !== Gene.path_mode.INLINE && this.gene.path_mode !== Gene.path_mode.INLINE_HALF){
+	generateLinePath(){
+		let path = this.generatePath();
+		if(this.gene.path_mode !== Gene.path_mode.INLINE){
 			path = this.adjustPath({
 				path: path,
 				mode: this.gene.path_mode,
@@ -156,16 +156,15 @@ class Path{
 	/**
 	 * Use a and b instead of x and y as the dimensions may be flipped
 	*/
-  generatePath(half){
+  generatePath(){
 		let smallestSize = Math.min(this.size.width, this.size.height);
-		let mult = (half)? 0.5 : 1;
     let returner = [], b, aVal;
 		if(this.gene.path_grouping === Gene.path_grouping.DATA_GROUP){
 			b = (this.size.height - this.padding * this.groups.total) / this.groups.total;
-			aVal = (this.size.width * mult - this.padding * 2) / this.groups.max;
+			aVal = (this.size.width - this.padding * 2) / this.groups.max;
 		} else {
 	    b = (this.size.height - this.padding * 2) / 2 + this.padding;
-			aVal = (this.size.width * mult - this.padding * (2 * mult)) / this.num;
+			aVal = (this.size.width - this.padding * 2) / this.num;
 		}
 
 		let total = this.getMean(this.data).total, p1, p2;
@@ -173,9 +172,9 @@ class Path{
     for(var i = 0; i < this.num; i++, count++){
 			let bMult = (this.gene.path_grouping === Gene.path_grouping.DATA_GROUP)? this.data[i].group + 1: 1;
 			if(this.gene.path_points === Gene.path_points.VALUE_DEPENDANT)
-				aVal = (this.size.width * mult  - this.padding * 2) * (this.data[i].value / total);
+				aVal = (this.size.width - this.padding * 2) * (this.data[i].value / total);
 			if(i === 0)
-				p1 = new Point(i * aVal + this.padding + ((half)? (this.size.width - this.padding * 2) * 0.5: 0), b * bMult);
+				p1 = new Point(i * aVal + this.padding, b * bMult);
 			else{
 				if(count >= this.groups[group] && this.gene.path_grouping === Gene.path_grouping.DATA_GROUP){
 					xVal = this.padding;

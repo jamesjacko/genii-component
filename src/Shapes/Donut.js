@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Path from '../Path';
 import Gene from '../Gene';
-import Point from '../Point'
 
 class Donut extends Component{
 	constructor(props){
@@ -55,23 +54,6 @@ class Donut extends Component{
 					endAngle );
 				strokeWidth = props.fullSize / 10;
 				break;
-			case Gene.shape.RADIAL_BAR:
-				startAngle = 0;
-				endAngle = (360 * Math.PI / 180) * props.value;
-				console.log(props.value);
-				let centerPoint = new Point(
-					props.pointA.x + props.pointB.x - props.pointA.x,
-					props.pointA.y + props.pointB.y - props.pointA.y
-				);
-				arc = this.describeArc(
-					centerP,
-				 	centerP,
-					Point.distance(new Point(centerP, centerP), centerPoint),
-					0,
-					Math.PI * 2 * props.value);
-				strokeWidth = Point.distance(props.pointA, props.pointB) * 0.90;
-
-				break;
 			case Gene.shape.I_RADIAL:
 			default:
 				arc = this.describeArc(
@@ -112,7 +94,7 @@ class Donut extends Component{
     var start = this.polarToCartesian(x, y, radius, endAngle);
     var end = this.polarToCartesian(x, y, radius, startAngle);
 
-    var largeArcFlag = endAngle - startAngle <= Math.PI ? "0" : "1";
+    var largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
 
     var d = [
         "M", start.x, start.y,

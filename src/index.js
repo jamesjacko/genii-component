@@ -93,7 +93,6 @@ class MURV extends Component{
 						fill = { Color.getColor({val:item.value, type:this.gene.color, random:this.random, itemColor:item.color}) }
 						gene = { this.gene }
 						value = { item.value }
-						color = { item.color }
           />
         );
     	});

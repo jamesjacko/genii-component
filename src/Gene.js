@@ -10,8 +10,7 @@ class Gene{
 		STAR: 8,
 		I_RADIAL: 9,
 		SPARKLINE: 10,
-		BAR: 11,
-		RADIAL_BAR: 12
+		BAR: 11
   }
   static color = {
     BLACK: 1,
@@ -35,8 +34,7 @@ class Gene{
     VALUE_DEPENDANT: 3,
     MEAN_DEVIATION: 4,
 		RING: 5,
-		CUBE_SPIRAL: 6,
-		INLINE_HALF: 7
+		CUBE_SPIRAL: 6
   }
   static path_rotation = {
     NONE: 1,
