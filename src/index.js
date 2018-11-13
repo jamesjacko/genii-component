@@ -16,22 +16,33 @@ class MURV extends Component{
 		this.gene = props.config.gene;
 		ErrorHandler.checkGene(this.gene);
     this.data = props.config.data.dataset.object.values;
-    this.size = props.config.data.dataset.object.size;
+		this.height = props.config.data.dataset.object.size.height;
+		this.width = props.config.data.dataset.object.size.width;
+
+		this.size = Math.min(this.width, this.height);
+		if(this.gene.path_mode !== Gene.path_mode.RING &&
+			 this.gene.path_mode !== Gene.path_mode.CUBE_SPIRAL &&
+			 this.gene.path_grouping !== Gene.path_grouping.DATA_GROUP)
+			 this.size = this.width;
+
+		this.padding = props.config.data.dataset.object.size.padding;
     this.random = new Random(props.config.data.dataset.object.name);
-    this.padding = this.size / 10;
 		this.maxPV = 0;
 		this.minPV = 1.1;
 		this.maxP = {};
-		this.minP = {}
-		this.path = new Path(
-			this.data.length,
-			this.size,{
+		this.minP = {};
+		this.path = new Path({
+				size:{
+					width: this.width,
+					height: this.height,
+					padding: this.padding
+				},
+				dataLength: this.data.length,
 				random:this.random,
 				padding:this.padding,
 				data:this.data,
 				gene:this.gene
 			}
-
 		);
   }
   renderShapes(path, shapes, size, placement, goo){
@@ -78,7 +89,7 @@ class MURV extends Component{
 						padding={ this.padding }
             size={ (max - minimum) * (item.value) + minimum }
             key={ i }
-						fill = { Color.getColor(item.value, this.gene.color, this.random) }
+						fill = { Color.getColor({val:item.value, type:this.gene.color, random:this.random, itemColor:item.color}) }
 						gene = { this.gene }
 						value = { item.value }
           />
@@ -115,8 +126,9 @@ class MURV extends Component{
 		}
 	}
   render(){
+
     return(
-      <svg className="icon" width={ this.size } height={ this.size }>
+      <svg className="icon" width={ this.width } height={ this.height }>
         <SVGFilter />
 					{ this.renderColorKey(1000) }
           { this.renderShapes(this.path.path, this.data, this.size, 1, true) }

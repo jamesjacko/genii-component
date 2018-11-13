@@ -17,7 +17,8 @@ class Gene{
     MONOTONE: 2,
     RANDOM: 3,
     VALUE_DEPENDANT: 4,
-		WHITE: 5
+		WHITE: 5,
+		FROM_DATA: 6,
   }
 	static color_key = {
 		OFF: 1,
