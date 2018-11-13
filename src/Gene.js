@@ -64,6 +64,34 @@ class Gene{
 		ON: 2
 	}
 
+	// static DEF_BAR = {
+	// 	shape: this.shape.BAR,
+	// 	color: this.color.FROM_DATA,
+	// 	color_key: this.color_key.OFF,
+	// 	path_points: this.path_points.EVEN,
+	// 	path_mode: this.path_mode.INLINE,
+	// 	path_rotation: this.path_rotation.NONE,
+	// 	path_grouping: this.path_grouping.NONE,
+	// 	object_rotation: this.object_rotation.NONE,
+	// 	object_size: this.object_size.FULL,
+	// 	filter: this.filter.OFF,
+	// 	debugging: this.debugging.OFF
+	// };
+	//
+	// static DEF_DONUT = {
+	// 	shape: this.shape.DONUT,
+	// 	color: this.color.FROM_DATA,
+	// 	color_key: this.color_key.OFF,
+	// 	path_points: this.path_points.EVEN,
+	// 	path_mode: this.path_mode.RING,
+	// 	path_rotation: this.path_rotation.NONE,
+	// 	path_grouping: this.path_grouping.NONE,
+	// 	object_rotation: this.object_rotation.NONE,
+	// 	object_size: this.object_size.FULL,
+	// 	filter: this.filter.OFF,
+	// 	debugging: this.debugging.OFF
+	// };
+
   constructor(params){
     this.shape = params.shape || Gene.shape.CIRCLE;
     this.color = params.color || Gene.shape.BLACK;

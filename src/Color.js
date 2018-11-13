@@ -3,7 +3,7 @@ import Gene from './Gene';
 
 class Color{
 	static getColor(params){
-		if(params.type === Gene.color.FROM_DATA){
+		if(params.type === Gene.color.FROM_DATA && typeof params.itemColor !== "undefined"){
 			return params.itemColor;
 		} else {
 			const COLOR_BREWER = ['#edf8b1', '#7fcdbb', '#2c7fb8'];
@@ -18,6 +18,7 @@ class Color{
 					break;
 				case Gene.color.RANDOM:
 				case Gene.color.VALUE_DEPENDANT:
+				case Gene.color.FROM_DATA:
 					color = COLOR_BREWER;
 					break;
 				case Gene.color.WHITE:
