@@ -53,14 +53,11 @@ class Spark extends Component{
       shapeComponents = this.shapes.map((item, i) => {
 
         const center = Path.centerPoint(this.path[i].a, this.path[i].b);
-        if(i < 2){
-          console.log(this.path[i].a, this.path[i].b, center);
-        }
         const minimum = 0;
         let max = this.path[i].dist;
 
         return(
-          <g>
+          <g key={ "square" + i }>
           <Square
             x={ center.x }
             y={ (item.value >= total / this.shapes.length)? center.y : center.y + max }
