@@ -42,6 +42,7 @@ class Shape extends Component{
 			case Gene.shape.RADIAL:
 			case Gene.shape.I_RADIAL:
 			case Gene.shape.STAR:
+			case Gene.shape.RADIAL_BAR:
 				this.component = components.donut;
 				break;
 			case Gene.shape.SPARKLINE:
