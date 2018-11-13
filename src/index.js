@@ -20,8 +20,8 @@ class MURV extends Component{
 		this.width = props.config.data.dataset.object.size.width;
 
 		this.size = Math.min(this.width, this.height);
-		if(this.gene.path_mode !== Gene.path_mode.RING && 
-			 this.gene.path_mode !== Gene.path_mode.CUBE_SPIRAL && 
+		if(this.gene.path_mode !== Gene.path_mode.RING &&
+			 this.gene.path_mode !== Gene.path_mode.CUBE_SPIRAL &&
 			 this.gene.path_grouping !== Gene.path_grouping.DATA_GROUP)
 			 this.size = this.width;
 
@@ -89,7 +89,7 @@ class MURV extends Component{
 						padding={ this.padding }
             size={ (max - minimum) * (item.value) + minimum }
             key={ i }
-						fill = { Color.getColor(item.value, this.gene.color, this.random) }
+						fill = { Color.getColor({val:item.value, type:this.gene.color, random:this.random, itemColor:item.color}) }
 						gene = { this.gene }
 						value = { item.value }
           />
@@ -126,7 +126,7 @@ class MURV extends Component{
 		}
 	}
   render(){
-		
+
     return(
       <svg className="icon" width={ this.width } height={ this.height }>
         <SVGFilter />
