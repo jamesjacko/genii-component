@@ -16,7 +16,6 @@ class Path{
 	}
 
   constructor(prefs){
-		console.log(prefs);
     this.num = prefs.dataLength;
     this.size = prefs.size;
     this.random = prefs.random;

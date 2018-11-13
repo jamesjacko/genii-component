@@ -13,7 +13,6 @@ class Square extends Component{
 		let x, y, height;
 
 		let fullSize = props.fullSize - props.padding * 2;
-		console.log(fullSize);
 
 		if(props.gene.shape === Gene.shape.BAR || props.gene.object_size === Gene.object_size.WIN_LOSS){
 			x = props.x - dist / 2;
@@ -21,7 +20,7 @@ class Square extends Component{
 			x = props.x - props.size / 2;
 		}
 
-		if (props.gene.shape === Gene.shape.BAR){
+		if (props.gene.shape === Gene.shape.BAR && props.gene.object_size !== Gene.object_size.WIN_LOSS){
 			height = props.value * fullSize;
 		} else {
 			height = props.size;

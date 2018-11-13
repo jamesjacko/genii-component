@@ -13,7 +13,7 @@ class MURV extends Component{
   constructor(props){
     super(props);
 
-		this.gene = props.config.gene;
+		this.gene = props.gene;
 		ErrorHandler.checkGene(this.gene);
     this.data = props.config.data.dataset.object.values;
 		this.height = props.config.data.dataset.object.size.height;
