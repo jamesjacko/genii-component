@@ -59,6 +59,7 @@ class MURV extends Component{
           goo = { goo }
           gene = { this.gene }
           padding = { this.padding }
+          maxHeight={ this.height }
 					 />
 			)
 		} else {
