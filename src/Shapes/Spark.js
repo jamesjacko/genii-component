@@ -15,24 +15,27 @@ class Spark extends Component{
     this.color = props.color;
     this.gene = props.gene;
     this.padding = props.padding;
+    this.maxHeight = props.maxHeight;
   }
 
   render(){
     let shapeComponents = "";
-		let maxPV = 0, minPV = 1.1, maxP, minP;
+		let maxPV = 0, minPV = 1.1, maxP, minP, dist;
     let points = "";
     let total = 0;
+    console.log(this.size);
     for (var i = 0; i < this.shapes.length; i++) {
       total += this.shapes[i].value;
     }
     if(this.gene.object_size !== Gene.object_size.WIN_LOSS){
       this.shapes.map((item, i) => {
-
-        let p = Path.orthogonalCenterPoint(this.path[i].a, this.path[i].b, this.path[i].dist * item.value);
+        dist = (this.path[i].dist > this.maxHeight)? this.maxHeight - 6 : this.path[i].dist;
+        let p = Path.orthogonalCenterPoint(this.path[i].a, this.path[i].b, (dist * item.value) - dist / 2);
         if(item.value < minPV){
           minP = p;
           minPV = item.value
-        } else if (item.value >= maxPV) {
+        }
+        if (item.value >= maxPV) {
           maxP = p;
           maxPV = item.value;
         }
