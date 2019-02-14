@@ -42,14 +42,15 @@ class Path{
 		} else {
 			this.path = this.generateLinePath();
 		}
-		
+
   }
 
 
 	generateCubeSpiralPath(){
 		let longestSide = Math.ceil(Math.sqrt(this.data.length + 1));
+    console.log("Longest Side:" + longestSide);
 		let smallestSize = Math.min(this.size.width, this.size.height);
-		let segSize = (smallestSize - this.padding * 2) / longestSide;
+		let segSize = (smallestSize - this.padding * 2) / (longestSide + 2);
 		let p1, p2, a, b, path = [], curCount = 1, curCounter = 1, steps = 2, mult = 1;
 		for (var i = 0; i < this.data.length; i++) {
 			if(i === 0){
@@ -91,7 +92,7 @@ class Path{
 
 	generateRingPath(){
 		let smallestSize = Math.min(this.size.width, this.size.height);
-		let radius = (smallestSize - this.padding * 4) / 2;
+		let radius = (smallestSize - this.padding * 6) / 2;
 		let center = smallestSize / 2;
 		let angle = (360 / this.num) * (Math.PI / 180);
 		let total = this.getMean(this.data).total;
