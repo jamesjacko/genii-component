@@ -11,34 +11,33 @@ class Square extends Component{
 		angle = (360 + Math.round(degrees)) % 360;
 		let dist = Point.distance(props.pointA, props.pointB) * 0.9;
 		let x, y, height;
-
 		let fullSize = props.fullSize - props.padding * 2;
 
-		if(props.gene.shape === Gene.shape.BAR || props.gene.object_size === Gene.object_size.WIN_LOSS){
-			x = props.x - dist / 2;
+		if(props.gene.shape === Gene.shape.BAR || props.gene.object_size === Gene.object_size.WIN_LOSS ){
+			x = props.x - dist / 2.0;
 		} else {
 			x = props.x - props.size / 2;
 		}
 
 		if (props.gene.shape === Gene.shape.BAR && props.gene.object_size !== Gene.object_size.WIN_LOSS){
-			height = props.value * fullSize;
+			height = props.value * fullSize / 2;
 		} else {
 			height = props.size;
 		}
+
 		if(props.gene.object_size === Gene.object_size.WIN_LOSS){
 			y = props.y - height;
 		} else if(props.gene.shape === Gene.shape.BAR){
-			y = fullSize - height + props.padding;
+			y = (props.y - height) + fullSize / 4;
 		} else {
 			y = props.y - height / 2;
 		}
 
-
-
+		console.log("Shape:" + props.gene.shape, "Size:" +props.gene.object_size)
 		this.elementAtts = {
 			x: x,
 			y: y,
-			width: (props.gene.shape = Gene.shape.BAR) ? dist :  props.size,
+			width: (props.gene.shape == Gene.shape.BAR) ? dist :  props.size,
 			height: height,
 			fill: props.fill
 		}

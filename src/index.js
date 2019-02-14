@@ -14,7 +14,7 @@ class MURV extends Component{
     super(props);
 
 		this.gene = props.gene;
-		ErrorHandler.checkGene(this.gene);
+		// ErrorHandler.checkGene(this.gene);
     this.data = props.config.data.dataset.object.values;
 		this.height = props.config.data.dataset.object.size.height;
 		this.width = props.config.data.dataset.object.size.width;
@@ -47,7 +47,6 @@ class MURV extends Component{
   }
   renderShapes(path, shapes, size, placement, goo){
 		let shapeComponents;
-
 		if(this.gene.shape === Gene.shape.SPARKLINE){
 
 			shapeComponents = (
@@ -89,7 +88,7 @@ class MURV extends Component{
 						fullSize={ size }
 						padding={ this.padding }
             size={ (max - minimum) * (item.value) + minimum }
-            key={ i }
+            id={ item.key }
 						fill = { Color.getColor({val:item.value, type:this.gene.color, random:this.random, itemColor:item.color}) }
 						gene = { this.gene }
 						value = { item.value }

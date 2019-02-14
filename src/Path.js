@@ -42,7 +42,7 @@ class Path{
 		} else {
 			this.path = this.generateLinePath();
 		}
-
+		
   }
 
 
@@ -50,7 +50,6 @@ class Path{
 		let longestSide = Math.ceil(Math.sqrt(this.data.length + 1));
 		let smallestSize = Math.min(this.size.width, this.size.height);
 		let segSize = (smallestSize - this.padding * 2) / longestSide;
-		console.log(longestSide, smallestSize, segSize);
 		let p1, p2, a, b, path = [], curCount = 1, curCounter = 1, steps = 2, mult = 1;
 		for (var i = 0; i < this.data.length; i++) {
 			if(i === 0){
@@ -185,6 +184,7 @@ class Path{
 				}
 				p1 = new Point(xVal, b * bMult)
 			}
+
 			p2 = new Point(p1.x + aVal, b * bMult);
       const dist = Point.distance(p1, p2);
       returner.push({a: p1, b: p2, dist: dist});

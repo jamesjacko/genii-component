@@ -11,7 +11,6 @@ class Color{
 			const BLACK = ['#000000', '#000000'];
 			const WHITE = ['#FFFFFF', '#FFFFFF'];
 			var color;
-			console.log(params);
 			switch (params.type) {
 				case Gene.color.MONOTONE:
 					color = MONOTONE;
