@@ -33,7 +33,6 @@ class Square extends Component{
 			y = props.y - height / 2;
 		}
 
-		console.log("Shape:" + props.gene.shape, "Size:" +props.gene.object_size)
 		this.elementAtts = {
 			x: x,
 			y: y,
@@ -48,7 +47,7 @@ class Square extends Component{
 
 	render(){
 		return(
-			<g>
+			<g key={ this.props.key }>
 				<rect {...this.elementAtts} />
 				{ Path.renderDebugInfo(this.pointA, this.pointB, this.debugging) }
 			</g>

@@ -106,7 +106,7 @@ class Donut extends Component{
 
 	render(){
 		return(
-			<g>
+			<g key={ this.props.key }>
 				<path { ...this.elementAtts } />
 				{ Path.renderDebugInfo(this.pointA, this.pointB, this.debugging) }
 			</g>

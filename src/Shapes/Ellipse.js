@@ -24,7 +24,7 @@ class Ellipse extends Component{
 
 	render(){
 		return(
-			<g>
+			<g key={ this.props.key }>
 			<ellipse {...this.elementAtts} />
 			{ Path.renderDebugInfo(this.pointA, this.pointB, this.debug) }
 			</g>

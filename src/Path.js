@@ -48,7 +48,6 @@ class Path{
 
 	generateCubeSpiralPath(){
 		let longestSide = Math.ceil(Math.sqrt(this.data.length + 1));
-    console.log("Longest Side:" + longestSide);
 		let smallestSize = Math.min(this.size.width, this.size.height);
 		let segSize = (smallestSize - this.padding * 2) / (longestSide + 2);
 		let p1, p2, a, b, path = [], curCount = 1, curCounter = 1, steps = 2, mult = 1;

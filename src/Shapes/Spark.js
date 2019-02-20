@@ -23,7 +23,6 @@ class Spark extends Component{
 		let maxPV = 0, minPV = 1.1, maxP, minP, dist;
     let points = "";
     let total = 0;
-    console.log(this.size);
     for (var i = 0; i < this.shapes.length; i++) {
       total += this.shapes[i].value;
     }

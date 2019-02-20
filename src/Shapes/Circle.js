@@ -18,7 +18,7 @@ class Circle extends Component{
 	}
 	render(){
 		return(
-			<g>
+			<g key={ this.props.key }>
 				<circle {...this.elementAtts} />
 				{ Path.renderDebugInfo(this.pointA, this.pointB, this.debugging) }
 			</g>
