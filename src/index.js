@@ -12,7 +12,6 @@ class MURV extends Component{
 
   constructor(props){
     super(props);
-
 		this.gene = props.gene;
 		// ErrorHandler.checkGene(this.gene);
     this.data = props.config.data.dataset.object.values;
@@ -86,14 +85,21 @@ class MURV extends Component{
             pointA={ path[i].a }
             pointB={ path[i].b }
 						fullSize={ size }
+            range={ {
+              min: this.props.config.data.dataset.object.min,
+              max: this.props.config.data.dataset.object.max
+            } }
 						padding={ this.padding }
             size={ (max - minimum) * (item.value) + minimum }
             id={ item.key }
 						fill = { Color.getColor({val:item.value, type:this.gene.color, random:this.random, itemColor:item.color}) }
 						gene = { this.gene }
 						value = { item.value }
+            avg = { item.avg }
             color = { item.color }
             key = { i }
+            index = { i }
+            random = { this.random }
           />
         );
     	});
@@ -101,6 +107,7 @@ class MURV extends Component{
     return <g filter={
 			(this.gene.filter === _Gene.filter.GOO)? "url(#goo)": "" }
 			>
+
 
 				{ shapeComponents }
 				</g>

@@ -58,3 +58,8 @@ class Color{
 
 
 export default Color;
+
+export const GradientColor = (colors, value) => {
+	let chroma = Chroma.scale(colors);
+	return chroma(value).hex();
+}

@@ -58,7 +58,6 @@ class Donut extends Component{
 			case Gene.shape.RADIAL_BAR:
 				startAngle = 0;
 				endAngle = (360 * Math.PI / 180) * props.value;
-				console.log(props.value);
 				let centerPoint = new Point(
 					props.pointA.x + props.pointB.x - props.pointA.x,
 					props.pointA.y + props.pointB.y - props.pointA.y
@@ -122,9 +121,11 @@ class Donut extends Component{
 	}
 
 	render(){
+		let amnt = (this.props.gene.object_rotation === Gene.object_rotation.RANDOM) ? (this.props.random.random() * 360 - 180) : 180 * this.props.value;
+		let rot = (this.props.gene.object_rotation !== Gene.object_rotation.NONE)? "rotate(" + amnt + " " + this.props.x + " " + this.props.y + ")" : "";
 		return(
 			<g key={ this.props.key }>
-				<path { ...this.elementAtts } />
+				<path { ...this.elementAtts } transform={ rot }/>
 				{ Path.renderDebugInfo(this.pointA, this.pointB, this.debugging) }
 			</g>
 		);

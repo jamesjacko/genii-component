@@ -211,7 +211,8 @@ class Path{
 				const sel = (i > 0)? i - 1 : i;
 				prefs.path[i].b.y = prefs.path[sel].b.y + (adj * meanDeviation);
 			} else {
-				prefs.path[i].b.y += this.random.random() * this.size.height / adjustment - this.size.height / (adjustment * 2);
+				prefs.path[i].b.y = this.random.random() * this.size.height;
+				prefs.path[i].b.x = this.random.random() * this.size.width;
 			}
 			prefs.path[i].dist = Point.distance(prefs.path[i].a, prefs.path[i].b);
 		}
@@ -221,7 +222,9 @@ class Path{
   adjustPoint(p){
     switch (this.path_mode) {
       case Gene.path_mode.RANDOM:
-        p.y += this.random.random() * this.size.height / 2.5 - this.size.height / 5;
+        p.x += this.random.random() * this.size.width;
+        p.y += this.random.random() * this.size.height;
+        console.log(p);
         break;
       case 2:
         p.y = p.x;

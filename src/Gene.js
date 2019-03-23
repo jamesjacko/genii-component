@@ -20,6 +20,7 @@ class Gene{
     VALUE_DEPENDANT: 4,
 		WHITE: 5,
 		FROM_DATA: 6,
+    GRADIENT: 7
   }
 	static color_key = {
 		OFF: 1,
@@ -32,11 +33,10 @@ class Gene{
   static path_mode = {
     INLINE: 1,
     RANDOM: 2,
-    VALUE_DEPENDANT: 3,
-    MEAN_DEVIATION: 4,
-		RING: 5,
-		CUBE_SPIRAL: 6,
-    INLINE_HALF: 7
+    MEAN_DEVIATION: 3,
+		RING: 4,
+		CUBE_SPIRAL: 5,
+    INLINE_HALF: 6
   }
   static path_rotation = {
     NONE: 1,
@@ -50,7 +50,8 @@ class Gene{
   static object_rotation = {
     NONE: 1,
     VALUE_DEPENDANT: 2,
-    RANDOM: 3
+    RANDOM: 3,
+    RADIAL: 4
   }
 	static object_size = {
 		FULL: 1,
@@ -102,7 +103,7 @@ class Gene{
     this.path_mode = params.path_mode || Gene.path_mode.INLINE;
     this.path_rotation = params.path_rotation || Gene.path_rotation.NONE;
 		this.path_grouping = params.path_grouping || Gene.path_grouping.NONE;
-    this.object_rotaion = params.path_rotation || Gene.path_rotation.NONE;
+    this.object_rotation = params.object_rotation || Gene.object_rotation.NONE;
 		this.object_size = params.object_size || Gene.object_size.FULL;
     this.filter = params.filter || Gene.filter.OFF;
 		this.debugging = params.debugging || Gene.debugging.OFF;

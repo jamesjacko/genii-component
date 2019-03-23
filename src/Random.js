@@ -21,5 +21,4 @@ class Random{
   	return hash;
   };
 }
-
 export default Random;
