@@ -63,6 +63,7 @@ class MURV extends Component{
 		} else {
 	    shapeComponents = shapes.map((item, i) => {
 				const center = Path.centerPoint(path[i].a, path[i].b);
+        console.log(path[i].a, path[i].b, this.gene.path_mode);
         const minimum = 0;
 				let max = path[i].dist;
 				if(this.gene.path_grouping === _Gene.path_grouping.DATA_GROUP){

@@ -11,7 +11,7 @@ class Square extends Component{
 		let degrees = 180 * angle / Math.PI;
 		angle = (360 + Math.round(degrees)) % 360;
 		this.angle = angle;
-		let dist = Point.distance(props.pointA, props.pointB) * (typeof(props.value === "array")? 0.6 : 0.9);
+		let dist = Point.distance(props.pointA, props.pointB) * (typeof props.value === "array" ? 0.6 : 0.9);
 		let x, y, height;
 		let fullSize = props.fullSize - props.padding * 2;
 
@@ -20,25 +20,28 @@ class Square extends Component{
 		} else {
 			x = props.x - props.size / 2;
 		}
+		let hMult = (typeof(props.value === "array")? fullSize : fullSize / 2);
+
 		if (props.gene.shape === Gene.shape.BAR && props.gene.object_size !== Gene.object_size.WIN_LOSS){
-			height = (typeof(props.value === "array")? (props.value[1] - props.value[0]) / (props.range.max - props.range.min) : props.value) *
-		(typeof(props.value === "array")? fullSize : fullSize / 2);
+			height = typeof props.value === "array"  ? (props.value[1] - props.value[0]) / (props.range.max - props.range.min) : props.value * hMult;
 		} else {
 			height = props.size;
 		}
 
+
+
 		if(props.gene.object_size === Gene.object_size.WIN_LOSS){
 			y = props.y - height;
-		} else if(props.gene.shape === Gene.shape.BAR){
-			if(typeof props.range.min !== undefined){
+		}
+		if(props.gene.shape === Gene.shape.BAR){
+			if(typeof props.range.min !== "undefined"){
 				 y = ((props.range.max - props.value[1])/ (props.range.max - props.range.min)) * fullSize + props.padding
 			} else {
-				y = (props.y - height) + fullSize / 4;
+				y = (props.y - height) + fullSize / 2;
 			}
 		} else {
 			y = props.y - height / 2;
 		}
-
 		if(props.gene.path_mode === Gene.path_mode.RING){
 			x = props.pointB.x + (props.pointB.x - props.pointA.x) / 2 - dist / 2
 			y = props.pointB.y + (props.pointB.y - props.pointA.y) / 2
@@ -119,7 +122,7 @@ class Square extends Component{
 		}
 
 		let rot = (this.props.gene.object_rotation !== Gene.object_rotation.NONE)? "rotate(" + (amnt) + " " + this.center.x + " " + this.center.y + ")" : "";
-		let rnd = (typeof this.props.avg === "object")? "5px" : "";
+		let rnd = (typeof this.props.avg === "object")? "5px" : "0px";
 		return(
 			<g key={ this.props.key }>
 				{
