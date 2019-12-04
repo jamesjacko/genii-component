@@ -30,7 +30,7 @@ Now go to your app and hit ```yarn link murv```
 
 ```javascript
 class Gene{
-  static shape = {
+    static shape = {
     CIRCLE: 1,
     SQUARE: 2,
     ELLIPSE: 3,
@@ -39,14 +39,19 @@ class Gene{
     DONUT: 6,
     RADIAL: 7,
     STAR: 8,
-    I_RADIAL: 9
+    I_RADIAL: 9,
+    SPARKLINE: 10,
+    BAR: 11,
+    RADIAL_BAR: 12
   }
   static color = {
     BLACK: 1,
     MONOTONE: 2,
     RANDOM: 3,
     VALUE_DEPENDANT: 4,
-    WHITE: 5
+    WHITE: 5,
+    FROM_DATA: 6,
+    GRADIENT: 7
   }
   static color_key = {
     OFF: 1,
@@ -59,10 +64,10 @@ class Gene{
   static path_mode = {
     INLINE: 1,
     RANDOM: 2,
-    VALUE_DEPENDANT: 3,
-    MEAN_DEVIATION: 4,
-    RING: 5,
-    CUBE_SPIRAL: 6
+    MEAN_DEVIATION: 3,
+    RING: 4,
+    CUBE_SPIRAL: 5,
+    INLINE_HALF: 6
   }
   static path_rotation = {
     NONE: 1,
@@ -76,11 +81,13 @@ class Gene{
   static object_rotation = {
     NONE: 1,
     VALUE_DEPENDANT: 2,
-    RANDOM: 3
+    RANDOM: 3,
+    RADIAL: 4
   }
   static object_size = {
     FULL: 1,
-    VALUE_DEPENDANT: 2
+    VALUE_DEPENDANT: 2,
+    WIN_LOSS: 3
   }
   static filter = {
     NONE: 1,
