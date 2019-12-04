@@ -5,12 +5,12 @@ class Gene{
     ELLIPSE: 3,
     TRIANGLE: 4,
     HUMP: 5,
-		DONUT: 6,
-		RADIAL: 7,
-		STAR: 8,
-		I_RADIAL: 9,
-		SPARKLINE: 10,
-		BAR: 11,
+    DONUT: 6,
+    RADIAL: 7,
+    STAR: 8,
+    I_RADIAL: 9,
+    SPARKLINE: 10,
+    BAR: 11,
     RADIAL_BAR: 12
   }
   static color = {
@@ -18,24 +18,24 @@ class Gene{
     MONOTONE: 2,
     RANDOM: 3,
     VALUE_DEPENDANT: 4,
-		WHITE: 5,
-		FROM_DATA: 6,
+    WHITE: 5,
+    FROM_DATA: 6,
     GRADIENT: 7
   }
-	static color_key = {
-		OFF: 1,
-		ON: 2
-	}
-	static path_points = {
-		EVEN: 1,
-		VALUE_DEPENDANT: 2
-	}
+  static color_key = {
+    OFF: 1,
+    ON: 2
+  }
+  static path_points = {
+    EVEN: 1,
+    VALUE_DEPENDANT: 2
+  }
   static path_mode = {
     INLINE: 1,
     RANDOM: 2,
     MEAN_DEVIATION: 3,
-		RING: 4,
-		CUBE_SPIRAL: 5,
+    RING: 4,
+    CUBE_SPIRAL: 5,
     INLINE_HALF: 6
   }
   static path_rotation = {
@@ -43,29 +43,31 @@ class Gene{
     MEAN_DEPENDANT: 2,
     RANDOM: 3
   }
-	static path_grouping = {
-		NONE: 1,
-		DATA_GROUP: 2,
-	}
+  static path_grouping = {
+    NONE: 1,
+    DATA_GROUP: 2,
+  }
   static object_rotation = {
     NONE: 1,
     VALUE_DEPENDANT: 2,
     RANDOM: 3,
     RADIAL: 4
   }
-	static object_size = {
-		FULL: 1,
-		VALUE_DEPENDANT: 2,
+  static object_size = {
+    FULL: 1,
+    VALUE_DEPENDANT: 2,
     WIN_LOSS: 3
-	}
+  }
   static filter = {
     NONE: 1,
     GOO: 2
   }
-	static debugging = {
-		OFF: 1,
-		ON: 2
-	}
+  static debugging = {
+    OFF: 1,
+    ON: 2
+  }
+
+	/* Example Genes */
 
 	// static DEF_BAR = {
 	// 	shape: this.shape.BAR,
