@@ -18,15 +18,13 @@ Describe murv-component here.
 
 https://codeburst.io/extracting-a-react-js-component-and-publishing-it-on-npm-2a49096757f5
 
-Go to ```/code/awesome-btn``` and hit ```npm i``` . After that, 'npm link'
+Go to ```/code/murv-component``` and hit ```yarn``` . After that, ```yarn link```
 
 If everything worked as expected you should see a message like this on your terminal:
 
-```/usr/local/lib/node_modules/awesome-btn -> /Users/your-name/code/awesome-btn```
+```/usr/local/lib/node_modules/murv-component -> /Users/your-name/code/murv-component```
 
-Now go to your app and hit ```npm link murv```
-
-You should see a message like this:
+Now go to your app and hit ```yarn link murv```
 
 ## Possible Gene Configurations
 
