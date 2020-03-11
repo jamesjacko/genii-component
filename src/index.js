@@ -30,19 +30,23 @@ class MURV extends Component{
 		this.minPV = 1.1;
 		this.maxP = {};
 		this.minP = {};
-		this.path = new Path({
-				size:{
-					width: this.width,
-					height: this.height,
-					padding: this.padding
-				},
-				dataLength: this.data.length,
-				random:this.random,
-				padding:this.padding,
-				data:this.data,
-				gene:this.gene
-			}
-		);
+		if(typeof props.path != "undefined"){
+			this.path = props.path
+		} else {
+			this.path = new Path({
+					size:{
+						width: this.width,
+						height: this.height,
+						padding: this.padding
+					},
+					dataLength: this.data.length,
+					random:this.random,
+					padding:this.padding,
+					data:this.data,
+					gene:this.gene
+				}
+			);
+		}
   }
   renderShapes(path, shapes, size, placement, goo){
 		let shapeComponents;
