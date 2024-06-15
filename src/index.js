@@ -8,7 +8,7 @@ import _Gene from './Gene';
 import ErrorHandler from './ErrorHandler';
 import SVGFilter from './SVGFilter';
 
-class MURV extends Component{
+class GENII extends Component{
 
   constructor(props){
     super(props);
@@ -150,5 +150,5 @@ class MURV extends Component{
   }
 }
 
-export default MURV;
+export default GENII;
 export const Gene = _Gene;

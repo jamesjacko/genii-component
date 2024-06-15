@@ -1,10 +1,10 @@
-# MURV - Micro Unit-based React Visualisations
+# Genii Component
 
 [![Travis][build-badge]][build]
 [![npm package][npm-badge]][npm]
 [![Coveralls][coveralls-badge]][coveralls]
 
-Describe murv-component here.
+Genii Component is a generative library for creating visualisations using a path model and gene-like grammar.
 
 [build-badge]: https://img.shields.io/travis/user/repo/master.png?style=flat-square
 [build]: https://travis-ci.org/user/repo
@@ -18,13 +18,15 @@ Describe murv-component here.
 
 https://codeburst.io/extracting-a-react-js-component-and-publishing-it-on-npm-2a49096757f5
 
-Go to ```/code/murv-component``` and hit ```yarn``` . After that, ```yarn link```
+Clone the repo on your computer
+
+Go to ```/genii-component``` and hit ```yarn``` . After that, ```yarn link```
 
 If everything worked as expected you should see a message like this on your terminal:
 
-```/usr/local/lib/node_modules/murv-component -> /Users/your-name/code/murv-component```
+```/usr/local/lib/node_modules/genii-component -> /Users/your-name/code/genii-component```
 
-Now go to your app and hit ```yarn link murv```
+Now go to your app and hit ```yarn link genii-component```
 
 ## Possible Gene Configurations
 
