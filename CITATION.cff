@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Jackson"
+  given-names: "James"
+  orcid: "https://orcid.org/0000-0002-9383-5888"
+title: "GENII React Component Library"
+version: 1.0.0
+doi: 10.5281/zenodo.12571856
+date-released: 2024-06-27
+url: "https://github.com/jamesjacko/genii-component"

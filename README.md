@@ -1,32 +1,23 @@
 # Genii Component
 
-[![Travis][build-badge]][build]
 [![npm package][npm-badge]][npm]
-[![Coveralls][coveralls-badge]][coveralls]
+[![DOI](https://zenodo.org/badge/155877027.svg)](https://zenodo.org/doi/10.5281/zenodo.12571855)
+![Node LTS (16.20)](https://img.shields.io/badge/node-v16.20.x-blue)
+
 
 Genii Component is a generative library for creating visualisations using a path model and gene-like grammar.
-
-[build-badge]: https://img.shields.io/travis/user/repo/master.png?style=flat-square
-[build]: https://travis-ci.org/user/repo
-
-[npm-badge]: https://img.shields.io/npm/v/npm-package.png?style=flat-square
-[npm]: https://www.npmjs.org/package/npm-package
-
-[coveralls-badge]: https://img.shields.io/coveralls/user/repo/master.png?style=flat-square
-[coveralls]: https://coveralls.io/github/user/repo
-
 
 https://codeburst.io/extracting-a-react-js-component-and-publishing-it-on-npm-2a49096757f5
 
 Clone the repo on your computer
 
-Go to ```/genii-component``` and hit ```yarn``` . After that, ```yarn link```
+Go to ```/genii-component``` and hit ```npm``` . After that, ```npm link```
 
 If everything worked as expected you should see a message like this on your terminal:
 
 ```/usr/local/lib/node_modules/genii-component -> /Users/your-name/code/genii-component```
 
-Now go to your app and hit ```yarn link genii-component```
+Now go to your app and hit ```npm link genii-component```
 
 ## Possible Gene Configurations
 
