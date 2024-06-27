@@ -1,6 +1,4 @@
 # Genii Component
-
-[![npm package][npm-badge]][npm]
 [![DOI](https://zenodo.org/badge/155877027.svg)](https://zenodo.org/doi/10.5281/zenodo.12571855)
 ![Node LTS (16.20)](https://img.shields.io/badge/node-v16.20.x-blue)
 
